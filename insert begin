@@ -1,0 +1,49 @@
+import java.util.*;
+class linked{
+    Node head;
+    Node tail;
+    class Node{
+        int data;
+        Node next;
+        Node prev;
+        Node(int val){
+            data = val;
+            next = null;
+            prev=null;
+        }
+    }
+    linked(){
+        head = null;
+        tail=null;
+    }
+    public void insertbegin(int val) {
+        Node newnode = new Node(val);
+        newnode.next = head;
+        if (head == null) {
+            head = newnode;
+            tail = newnode;
+        } else {
+            head.prev = newnode;
+            newnode.next = head;
+            head = newnode;
+        }
+    }
+    public void display(){
+        Node temp = head;
+        while(temp != null){
+            System.out.print(temp.data+"-->");
+            temp = temp.next;
+        }
+        System.out.print("Null");
+    }
+    public static void main(String args[]){
+        Scanner sc = new Scanner (System.in);
+        linked list = new linked();
+        int m = sc.nextInt();
+        for (int i =0 ;i<m;i++) {
+            int val = sc.nextInt();
+            list.insertbegin(val);
+        }
+        list.display();
+    }
+}
